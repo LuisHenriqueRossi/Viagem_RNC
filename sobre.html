@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<!-- Cabeça da página com metadados e ligações com os estilos. -->
+<head>
+<!-- Define o charset e o viewport pro layout funcionar no celular. -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ViagenRNC — Sobre o site</title>
+<!-- Descrição que aparece nas buscas. -->
+<meta name="description" content="Conheça a ViagenRNC: o que é o site, como ele funciona, o que você encontra em cada página e como seus dados são guardados.">
+<!-- Ícone da aba feito com emoji dentro de um SVG. -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ℹ️</text></svg>">
+<!-- Aplica o tema salvo antes da página aparecer pra não piscar. -->
+<script>document.documentElement.dataset.theme=localStorage.getItem('vrnc_theme')||'light'</script>
+<!-- Carrega o CSS base e o CSS só desta página. -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sobre.css">
+</head>
+<body>
+
+<!-- Link de acessibilidade que pula o menu e vai direto pro conteúdo. -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- Cabeçalho com logo, menu, botão de tema e botão mobile. -->
+<header class="topo"><div class="container">
+<a class="logo" href="index.html" aria-label="ViagenRNC - início">✈️ ViagenRNC</a>
+<!-- Menu de navegação principal com os links das páginas. -->
+<nav class="nav" id="nav" aria-label="Principal">
+<a href="index.html">Início</a><a href="viagens.html">Explorar Viagens</a><a href="ia.html">Simulador IA</a><a href="index.html#planejador">Gerenciador de Tarefas</a><a href="sobre.html">Sobre o site</a><a href="vip.html" class="vip-link">👑 Área VIP</a>
+</nav>
+<button class="icon-btn" id="btnTema" aria-label="Alternar modo claro e escuro" title="Alternar tema">🌙</button>
+<button class="icon-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</div></header>
+
+<!-- Conteúdo principal da página. -->
+<main id="conteudo">
+
+<!-- Abertura com título e frase resumindo o site. -->
+<section class="sobre-hero"><div class="container">
+<p class="etiqueta">Sobre o site</p>
+<h1>Conheça a ViagenRNC</h1>
+<p>Um site de voos nacionais para explorar destinos, comparar passagens e treinar uma compra online, tudo de mentirinha e sem risco.</p>
+</div></section>
+
+<!-- Índice com atalhos pros blocos. O JS marca o que está visível. -->
+<nav class="sobre-indice" aria-label="Nesta página"><div class="container">
+<a href="#o-que-e">O que é</a><a href="#numeros">Números</a><a href="#paginas">Páginas</a><a href="#como-funciona">Como funciona</a><a href="#por-dentro">Por dentro</a><a href="#duvidas">Dúvidas</a>
+</div></nav>
+
+<div class="container sobre-corpo">
+
+<!-- Bloco 1 com a ideia do projeto e o aviso de que nada é real. -->
+<section class="bloco reveal" id="o-que-e">
+<h2>O que é a ViagenRNC?</h2>
+<p>A ViagenRNC é um projeto de site de passagens aéreas. Nela você navega por voos para cidades de <b>São Paulo</b>, <b>Rio de Janeiro</b> e <b>Minas Gerais</b>, filtra pelo que importa (preço, horário, companhia), vê os detalhes e simula a compra.</p>
+<p>Além do catálogo, o site tem um assistente que recomenda voos a partir de uma frase, uma área VIP com descontos e um planejador para organizar as tarefas da viagem.</p>
+<!-- Caixa de aviso dizendo que tudo é simulação. -->
+<p class="aviso-sobre"><b>Tudo é simulação.</b> As companhias, os voos e os preços são fictícios, e nenhuma compra é real. Nenhum dado seu sai do seu navegador.</p>
+</section>
+
+<!-- Bloco 2 com números do site calculados pelo JS. -->
+<section class="bloco reveal" id="numeros">
+<h2>O site em números</h2>
+<div class="stats" id="stats">
+<div class="stat"><strong data-conta="voos">0</strong><span>voos no catálogo</span></div>
+<div class="stat"><strong data-conta="cidades">0</strong><span>cidades de destino</span></div>
+<div class="stat"><strong data-conta="estados">0</strong><span>estados atendidos</span></div>
+<div class="stat"><strong data-conta="cias">0</strong><span>companhias aéreas</span></div>
+</div>
+<!-- Frase personalizada que o JS preenche com reservas e status VIP. -->
+<p class="sub" id="suaConta" aria-live="polite"></p>
+</section>
+
+<!-- Bloco 3 com cartões que explicam cada página e levam até ela. -->
+<section class="bloco reveal" id="paginas">
+<h2>O que tem em cada página</h2>
+<div class="cards-sobre">
+<article class="card-sobre"><span aria-hidden="true">✈️</span><h3>Explorar viagens</h3><p>Catálogo com filtros por estado, cidade, preço, companhia e horário, mais ordenação e compra simulada.</p><a href="viagens.html">Ver os voos →</a></article>
+<article class="card-sobre"><span aria-hidden="true">🤖</span><h3>Simulador IA</h3><p>Escreva algo como “voo barato para Minas” e receba recomendações com a justificativa de cada uma.</p><a href="ia.html">Conversar com o assistente →</a></article>
+<article class="card-sobre"><span aria-hidden="true">👑</span><h3>Área VIP</h3><p>Ative o VIP de teste e libere descontos de 10% a 25% em voos sorteados.</p><a href="vip.html">Conhecer o VIP →</a></article>
+<article class="card-sobre"><span aria-hidden="true">📝</span><h3>Planejador</h3><p>Lista de tarefas com prioridade, prazo e barra de progresso para organizar a viagem.</p><a href="index.html#planejador">Abrir o planejador →</a></article>
+</div>
+</section>
+
+<!-- Bloco 4 com o passo a passo da compra em lista numerada. -->
+<section class="bloco reveal" id="como-funciona">
+<h2>Como funciona, passo a passo</h2>
+<ol class="passos">
+<li><b>Escolha o destino.</b> Use os filtros da página de viagens ou peça uma recomendação ao assistente.</li>
+<li><b>Veja os detalhes.</b> Horários, duração, companhia e quantos assentos ainda restam.</li>
+<li><b>Simule a compra.</b> Informe nome, e-mail, data e passageiros. O resumo mostra o total na hora.</li>
+<li><b>Acompanhe sua reserva.</b> Ela aparece em “Minhas reservas” e, se você cancelar, os assentos voltam ao voo.</li>
+<li><b>Quer pagar menos?</b> Ative o VIP e os descontos passam a valer em todas as páginas.</li>
+</ol>
+</section>
+
+<!-- Bloco 5 com curiosidades técnicas. -->
+<section class="bloco reveal" id="por-dentro">
+<h2>Por dentro do site</h2>
+<p>O site é feito só com <b>HTML</b> (estrutura), <b>CSS</b> (visual) e <b>JavaScript</b> (comportamento). Não há servidor nem banco de dados: o que você faz fica salvo no próprio navegador, no <code>localStorage</code>.</p>
+<ul class="chips" aria-label="Tecnologias usadas">
+<li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>localStorage</li><li>Sem servidor</li><li>Sem API externa</li>
+</ul>
+<h3>Cuidados com acessibilidade</h3>
+<ul class="lista-simples">
+<li>Link “Pular para o conteúdo” para quem navega pelo teclado.</li>
+<li>Modo claro e escuro, que lembra a sua escolha.</li>
+<li>Janelas (modais) que prendem o foco e fecham com a tecla Esc.</li>
+<li>Animações reduzidas automaticamente para quem pediu isso ao sistema.</li>
+</ul>
+</section>
+
+<!-- Bloco 6 com perguntas frequentes em sanfona. -->
+<section class="bloco reveal" id="duvidas">
+<h2>Dúvidas frequentes</h2>
+<div class="faq" id="faq">
+<details><summary>As passagens são de verdade?</summary><p>Não. Os voos, as companhias e os preços são inventados e nenhuma compra é real. O site existe para demonstrar como uma loja de passagens funciona.</p></details>
+<details><summary>Onde ficam salvas as minhas reservas?</summary><p>No seu navegador. Se você limpar os dados do site ou usar outro navegador, elas não aparecem lá.</p></details>
+<details><summary>O assistente é uma inteligência artificial de verdade?</summary><p>Não. Ele é um simulador baseado em regras: o JavaScript lê a sua frase, procura cidade, estado, preço e duração e consulta os voos cadastrados.</p></details>
+<details><summary>Como ganho os descontos VIP?</summary><p>Na Área VIP, clique em “Ativar ViagenRNC VIP”. Alguns voos são sorteados com desconto, e o sorteio fica guardado para as próximas visitas.</p></details>
+<details><summary>Os voos mudam a cada visita?</summary><p>Não. O catálogo é sempre o mesmo. O que muda é a quantidade de assentos, que diminui quando você simula uma compra.</p></details>
+</div>
+</section>
+
+<!-- Chamada final que leva o visitante de volta pro site. -->
+<section class="cta-final reveal">
+<h2>Pronto para escolher o destino?</h2>
+<p>Veja todos os voos e simule a sua primeira compra.</p>
+<a class="btn btn-ouro" href="viagens.html">Explorar viagens</a>
+</section>
+
+</div>
+</main>
+
+<!-- Rodapé com o aviso de que a compra é só simulação. -->
+<footer class="rodape"><div class="container">© ViagenRNC · Simulação: nenhuma compra é real. <a href="index.html">Início</a> · <a href="viagens.html">Viagens</a> · <a href="vip.html">Área VIP</a> · <a href="ia.html">Simulador IA</a></div></footer>
+
+<!-- Carrega o script da página. -->
+<script src="js/sobre.js"></script>
+</body>
+</html>

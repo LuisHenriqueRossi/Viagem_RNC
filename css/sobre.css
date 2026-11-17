@@ -1,0 +1,351 @@
+/* Estilos só da página Sobre o site. As cores vêm das variáveis do style.css, então o modo escuro funciona sozinho. */
+
+/* Abertura da página, fundo azul em degradê, texto branco e um brilho decorativo no canto. */
+.sobre-hero{
+    position:relative;
+    overflow:hidden;
+    color:#fff;
+    padding:3.5rem 0 3rem;
+    background:linear-gradient(135deg,#1E3A8A,var(--pri));
+}
+/* Círculo de luz atrás do texto, só enfeite e não atrapalha os cliques. */
+.sobre-hero::after{
+    content:"";
+    position:absolute;
+    right:-80px;
+    top:-80px;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);
+    pointer-events:none;
+}
+/* Conteúdo da abertura fica acima do brilho. */
+.sobre-hero .container{
+    position:relative;
+    z-index:1;
+}
+/* Título grande da abertura, o tamanho se adapta a tela. */
+.sobre-hero h1{
+    font-size:clamp(2rem,5vw,3.2rem);
+    line-height:1.1;
+    margin:.3rem 0 .8rem;
+}
+/* Texto da abertura com largura limitada. */
+.sobre-hero p{
+    max-width:640px;
+    font-size:1.1rem;
+    opacity:.95;
+}
+/* Etiqueta pequena em cima do título. */
+.sobre-hero .etiqueta{
+    display:inline-block;
+    padding:.2rem .8rem;
+    border-radius:99px;
+    background:rgba(255,255,255,.18);
+    font-size:.85rem;
+    font-weight:700;
+    opacity:1;
+}
+
+/* Índice que fica preso logo abaixo do menu, no celular ele rola para o lado. */
+.sobre-indice{
+    position:sticky;
+    top:64px;
+    z-index:40;
+    background:var(--card);
+    border-bottom:1px solid var(--bord);
+}
+/* Links do índice em linha, com rolagem horizontal. */
+.sobre-indice .container{
+    display:flex;
+    gap:.3rem;
+    padding:.5rem 0;
+    overflow-x:auto;
+}
+/* Cada link do índice em formato de pílula. */
+.sobre-indice a{
+    flex:none;
+    padding:.35rem .9rem;
+    border-radius:99px;
+    color:var(--txt2);
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+}
+/* Fundo suave ao passar o mouse no link. */
+.sobre-indice a:hover{
+    background:var(--bg);
+}
+/* O JS marca com a classe ativo o link da parte que está na tela. */
+.sobre-indice a.ativo{
+    background:var(--pri);
+    color:#fff;
+}
+
+/* Coluna de leitura, impede o texto de ficar largo demais. */
+.sobre-corpo{
+    max-width:960px;
+    padding-bottom:3rem;
+}
+/* Cada seção da página com espaço em cima. */
+.bloco{
+    padding:2.4rem 0 .5rem;
+    /* Margem de rolagem para o título não ficar escondido atrás do menu e do índice fixos. */
+    scroll-margin-top:130px;
+}
+/* Título de cada seção. */
+.bloco h2{
+    font-size:1.7rem;
+    margin-bottom:.8rem;
+}
+/* Subtítulos dentro da seção. */
+.bloco h3{
+    margin:1.2rem 0 .5rem;
+}
+/* Parágrafos com cor mais suave. */
+.bloco p{
+    margin-bottom:.8rem;
+    color:var(--txt2);
+}
+/* Negrito volta para a cor normal do texto. */
+.bloco p b,.bloco li b{
+    color:var(--txt);
+}
+/* Trechos de código com caixinha e borda. */
+.bloco code{
+    padding:.1rem .4rem;
+    border-radius:6px;
+    background:var(--card);
+    border:1px solid var(--bord);
+    font-size:.9em;
+}
+
+/* Aviso dourado de que tudo é simulação, igual ao aviso do simulador de IA. */
+.aviso-sobre{
+    background:var(--card);
+    border-left:5px solid var(--ouro);
+    padding:.8rem 1rem;
+    border-radius:12px;
+    font-size:.95rem;
+}
+
+/* Números do site, cartões lado a lado que se reorganizam em telas menores. */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:1rem;
+    margin-bottom:1rem;
+}
+/* Cada cartão de número, tudo centralizado. */
+.stat{
+    display:grid;
+    gap:.2rem;
+    padding:1.2rem;
+    text-align:center;
+    background:var(--card);
+    border-radius:var(--r);
+    box-shadow:var(--sh);
+}
+/* Número grande em azul. */
+.stat strong{
+    font-size:2.4rem;
+    line-height:1;
+    color:var(--pri);
+}
+/* Legenda do número. */
+.stat span{
+    color:var(--txt2);
+    font-size:.9rem;
+}
+
+/* Cartões das páginas do site. */
+.cards-sobre{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1.2rem;
+}
+/* Cada cartão de página, em coluna e com leve movimento. */
+.card-sobre{
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+    padding:1.3rem;
+    background:var(--card);
+    border-radius:var(--r);
+    box-shadow:var(--sh);
+    transition:transform .25s;
+}
+/* Cartão sobe um pouquinho ao passar o mouse. */
+.card-sobre:hover{
+    transform:translateY(-4px);
+}
+/* Ícone do cartão em tamanho grande. */
+.card-sobre > span{
+    font-size:2rem;
+  line-height:1.3;
+}
+/* Título do cartão sem margem. */
+.card-sobre h3{
+    margin:0;
+}
+/* Texto do cartão ocupa o espaço que sobra e empurra o link para baixo. */
+.card-sobre p{
+    flex:1;
+    margin:0;
+    font-size:.92rem;
+}
+/* Link do cartão em negrito e sem sublinhado. */
+.card-sobre a{
+    font-weight:600;
+    text-decoration:none;
+}
+/* Sublinha o link ao passar o mouse. */
+.card-sobre a:hover{
+    text-decoration:underline;
+}
+
+/* Passo a passo, o contador do CSS numera cada item e o círculo azul mostra o número. */
+.passos{
+    list-style:none;
+    padding:0;
+    display:grid;
+    gap:.8rem;
+    counter-reset:passo;
+}
+/* Cada passo é um cartão com espaço na esquerda para o número. */
+.passos li{
+    position:relative;
+    padding:.9rem 1rem .9rem 3.6rem;
+    background:var(--card);
+    border-radius:var(--r);
+    box-shadow:var(--sh);
+    color:var(--txt2);
+    counter-increment:passo;
+}
+/* Círculo azul com o número do passo. */
+.passos li::before{
+    content:counter(passo);
+    position:absolute;
+    left:1rem;
+    top:50%;
+    transform:translateY(-50%);
+    width:32px;
+    height:32px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:var(--pri);
+    color:#fff;
+    font-weight:700;
+}
+
+/* Etiquetinhas das tecnologias. */
+.chips{
+    list-style:none;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin:.5rem 0 1rem;
+}
+/* Cada etiqueta em formato de pílula. */
+.chips li{
+    padding:.3rem .9rem;
+    border-radius:99px;
+    background:var(--card);
+    border:1px solid var(--bord);
+    font-size:.88rem;
+    font-weight:600;
+}
+/* Lista simples com marcador azul. */
+.lista-simples{
+    padding-left:1.2rem;
+    display:grid;
+    gap:.3rem;
+    color:var(--txt2);
+}
+/* Cor do marcador da lista. */
+.lista-simples li::marker{
+    color:var(--pri);
+}
+
+/* Perguntas frequentes, cada details vira um cartão e o sinal de mais vira menos quando abre. */
+.faq{
+    display:grid;
+    gap:.6rem;
+}
+/* Cada pergunta vira um cartão. */
+.faq details{
+    background:var(--card);
+    border-radius:12px;
+    box-shadow:var(--sh);
+    overflow:hidden;
+}
+/* Linha da pergunta, texto de um lado e sinal do outro. */
+.faq summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    padding:.9rem 1rem;
+    font-weight:600;
+    cursor:pointer;
+    list-style:none;
+}
+/* Esconde a setinha padrão do navegador. */
+.faq summary::-webkit-details-marker{
+    display:none;
+}
+/* Sinal de mais no fim da pergunta. */
+.faq summary::after{
+    content:"+";
+    font-size:1.4rem;
+    color:var(--pri);
+}
+/* Troca o mais por menos quando a pergunta está aberta. */
+.faq details[open] summary::after{
+    content:"−";
+}
+/* Resposta com espaço interno. */
+.faq details p{
+    padding:0 1rem 1rem;
+    margin:0;
+}
+
+/* Chamada final, caixa azul centralizada com botão dourado. */
+.cta-final{
+    margin-top:2.5rem;
+    padding:2.2rem 1.2rem;
+    text-align:center;
+    color:#fff;
+    border-radius:24px;
+    background:linear-gradient(135deg,#1E3A8A,var(--pri));
+}
+/* Título da chamada final. */
+.cta-final h2{
+    margin-bottom:.4rem;
+}
+/* Texto da chamada final. */
+.cta-final p{
+    margin-bottom:1.2rem;
+    opacity:.95;
+}
+
+/* Efeito de aparecer ao rolar, só esconde os blocos se o JS estiver rodando, assim quem está sem JavaScript ainda lê tudo. */
+.js .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .6s,transform .6s;
+}
+/* Quando ganha a classe visivel o bloco aparece no lugar. */
+.js .reveal.visivel{
+    opacity:1;
+    transform:none;
+}
+
+/* Telas pequenas, ajusta o espaçamento da abertura e o tamanho dos títulos. */
+@media(max-width:860px){
+    .sobre-hero{padding:2.5rem 0 2rem}
+    .bloco h2{font-size:1.4rem}
+}

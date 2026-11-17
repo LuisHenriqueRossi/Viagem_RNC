@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" data-theme="light">
+
+<!-- Cabeça da página com metadados e ligações com os estilos. -->
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ViagenRNC VIP — Viaje mais, economize mais</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+<!-- Aplica o tema salvo antes da página aparecer pra não piscar. -->
+<script>document.documentElement.dataset.theme=localStorage.getItem('vrnc_theme')||'light'</script>
+<!-- Carrega o CSS base e o CSS só desta página. -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/vip.css">
+</head>
+
+<body>
+<!-- Link de acessibilidade que pula o menu e vai direto pro conteúdo. -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- Cabeçalho com logo, menu, tema e botão mobile. -->
+<header class="topo"><div class="container">
+<a class="logo" href="index.html" aria-label="ViagenRNC - início">✈️ ViagenRNC</a>
+<!-- Menu de navegação principal com os links das páginas. -->
+<nav class="nav" id="nav" aria-label="Principal">
+<a href="index.html">Início</a><a href="viagens.html">Explorar Viagens</a><a href="ia.html">Simulador IA</a><a href="index.html#planejador">Gerenciador de Tarefas</a><a href="sobre.html">Sobre o site</a><a href="vip.html" class="vip-link">👑 Área VIP</a>
+</nav>
+
+<!-- Botão que alterna entre tema claro e escuro. -->
+<button class="icon-btn" id="btnTema" aria-label="Alternar modo claro e escuro" title="Alternar tema">🌙</button>
+<button class="icon-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</div></header>
+<!-- Conteúdo principal da área VIP. -->
+<main id="conteudo" class="container">
+<!-- Título da página VIP. -->
+<section class="vip-hero"><h1>⭐ ViagenRNC VIP</h1><p>Viaje mais, economize mais</p></section>
+<!-- Cartão VIP com status, benefícios e botões. O JS muda textos e classes conforme o VIP. -->
+<section class="vip-card" id="vipCard" aria-labelledby="bTitulo">
+<div class="status" role="status"><i></i><span id="vipStatus">VIP inativo</span></div>
+<h2 id="bTitulo">Benefícios exclusivos</h2>
+<ul><li>Descontos de 10% a 25% em voos selecionados</li><li>Acesso a ofertas exclusivas</li><li>Destaque para passagens promocionais</li><li>Experiência visual premium</li><li>Identificação de usuário VIP</li></ul>
+<!-- Botão que ativa o VIP. O de desativar fica escondido até o VIP estar ativo. -->
+<button class="btn btn-ouro" id="btnVip">Ativar ViagenRNC VIP</button>
+<button class="btn btn-sec" id="btnDesativar" hidden>Desativar VIP (teste)</button>
+<!-- Mensagem de sucesso mostrada depois da ativação. -->
+<p class="vip-msg" id="vipMsg" hidden>VIP ATIVADO COM SUCESSO!</p>
+</section>
+
+<!-- Grade de voos com desconto ou aviso de bloqueio pra quem não é VIP. -->
+<section class="sec-vip"><h2>Voos com desconto VIP</h2><p class="sub">Os descontos são simulados, sorteados na primeira ativação e ficam salvos no navegador.</p>
+<div class="grid" id="gridVip"></div></section>
+<div class="voltar"><a class="btn" href="index.html">← Voltar à página principal</a><a class="btn btn-sec" href="ia.html">Simulador IA</a></div><br>
+</main>
+<!-- Tela de animação da ativação. -->
+<div class="ativ" id="ativ" hidden aria-live="assertive"><div class="luz" id="luz"></div><div class="ativ-box"><div class="coroa" aria-hidden="true">👑</div><div class="ativ-barra"><i id="ativBarra"></i></div><p id="ativTxt">Verificando conta…</p></div></div>
+
+<!-- Carrega o script da página. -->
+<script src="js/vip.js"></script>
+</body></html>

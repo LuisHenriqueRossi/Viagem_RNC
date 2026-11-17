@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<!-- Metadados básicos e viewport pro celular. -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ViagenRNC AI — Simulador de recomendações</title>
+<link rel="icon" href="data:image/svg+xml, svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'> text y='.9em' font-size='90'>🤖/text>/svg>">
+<!-- Aplica o tema salvo antes da página aparecer pra não piscar. -->
+<script>document.documentElement.dataset.theme=localStorage.getItem('vrnc_theme')||'light'</script>
+<!-- Carrega o CSS base e o CSS só desta página. -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/ia.css">
+</head>
+
+<body>
+<!-- Link de acessibilidade que pula o menu e vai direto pro conteúdo. -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- Cabeçalho com logo, menu, tema e botão mobile. -->
+<header class="topo"><div class="container">
+<a class="logo" href="index.html" aria-label="ViagenRNC - início">✈️ ViagenRNC</a>
+<!-- Menu de navegação principal com os links das páginas. -->
+<nav class="nav" id="nav" aria-label="Principal">
+<a href="index.html">Início</a><a href="viagens.html">Explorar Viagens</a><a href="ia.html">Simulador IA</a><a href="index.html#planejador">Gerenciador de Tarefas</a><a href="sobre.html">Sobre o site</a><a href="vip.html" class="vip-link">👑 Área VIP</a>
+</nav>
+<!-- Botão que alterna entre tema claro e escuro. -->
+<button class="icon-btn" id="btnTema" aria-label="Alternar modo claro e escuro" title="Alternar tema">🌙</button>
+<!-- Botão que abre e fecha o menu no celular. -->
+<button class="icon-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</div></header>
+<!-- Área principal do simulador com título do assistente. -->
+<main id="conteudo" class="container"><div class="ia-wrap">
+<div class="ia-cab"><div class="av" aria-hidden="true">🤖</div><div><h1>ViagenRNC AI</h1><p class="sub" style="margin:0">Assistente virtual de viagens</p></div></div>
+<!-- Aviso explicando que o simulador usa regras e não IA de verdade. -->
+<p class="aviso-ia"><b>Simulador inteligente baseado em regras.</b> Não é uma IA generativa real nem usa API externa: o texto é interpretado por JavaScript e as recomendações vêm dos 75 voos cadastrados.</p>
+<!-- Histórico da conversa que o JS vai preenchendo. -->
+<div class="chat" id="chat" aria-live="polite"></div>
+<!-- Espaço onde o JS mostra os cartões de recomendação. -->
+<div class="ia-res" id="iaRes"></div>
+<!-- Formulário de pedido. O JS lê o texto e os botões de exemplo preenchem o campo. -->
+<form class="ia-form" id="iaForm">
+<label for="iaTexto">O que você procura?</label>
+<textarea id="iaTexto" placeholder="Ex.: Quero viajar para São Paulo com até R$ 500."></textarea>
+<div class="exemplos" id="exemplos"></div>
+<div class="ia-acoes"><button class="btn" type="submit" id="iaBtn">Gerar Recomendações</button><button class="btn btn-sec" type="button" id="iaLimpar">Limpar conversa</button><a class="btn btn-sec" href="index.html">Voltar à página principal</a></div>
+</form>
+</div></main>
+<!-- Carrega o script desta página. -->
+<script src="js/ia.js"></script>
+</body>
+</html>

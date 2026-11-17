@@ -1,0 +1,251 @@
+
+/* Título da página VIP, texto com degradê dourado. */
+.vip-hero{
+    padding:3rem 0 1rem;
+    text-align:center;
+}
+/* Título com degradê aparecendo só dentro das letras. */
+.vip-hero h1{
+    font-size:clamp(2rem,5vw,3rem);
+    background:linear-gradient(90deg,#F5B301,#FF8A00);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+/* Texto de apoio do título. */
+.vip-hero p{
+    color:var(--txt2);
+    font-size:1.15rem;
+}
+
+/* Cartão central do VIP, a transição suaviza a mudança de cores quando o VIP é ativado. */
+.vip-card{
+    position:relative;
+    max-width:640px;
+    margin:1.5rem auto;
+    padding:2rem;
+    border-radius:24px;
+    background:var(--card);
+    box-shadow:var(--sh);
+    border:2px solid var(--bord);
+    text-align:center;
+    transition:background .8s,border-color .8s,box-shadow .8s,transform .6s;
+}
+/* Lista de benefícios. */
+.vip-card ul{
+    list-style:none;
+    padding:0;
+    text-align:left;
+    display:grid;
+    gap:.5rem;
+    margin:1rem 0 1.5rem;
+}
+/* Estrelinha dourada antes de cada benefício. */
+.vip-card li::before{
+    content:"✦ ";
+    color:var(--ouro);
+}
+
+/* Etiqueta de status, a bolinha é cinza quando inativo e verde quando o VIP está ativado. */
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;padding:.3rem .9rem;
+    border-radius:99px;
+    background:var(--bg);
+    font-weight:700;
+    margin-bottom:1rem;
+}
+/* Bolinha do status, cinza por padrão. */
+.status i{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#9CA3AF;
+}
+
+/* Estado ativando, o cartão pulsa e cresce um pouco durante a animação. */
+.vip-card.ativando{
+    animation:pulso 1s infinite alternate;
+    transform:scale(1.03);
+}
+
+/* Estado ativo, fundo dourado, borda e sombra com brilho. */
+.vip-card.ativo{
+    background:linear-gradient(135deg,#3b2a00,#7a5600 50%,#F5B301);
+    color:#fff;
+    border-color:var(--ouro);
+    box-shadow:0 0 40px rgba(245,179,1,.6);
+}
+/* Etiqueta de status mais escura no cartão ativo. */
+.vip-card.ativo .status{
+    background:rgba(0,0,0,.35);
+}
+/* Bolinha verde com brilho quando o VIP está ativo. */
+.vip-card.ativo .status i{
+    background:#22C55E;
+    box-shadow:0 0 8px #22C55E;
+}
+
+/* Animação de pulso, a sombra dourada vai e volta. */
+@keyframes pulso{
+    from{box-shadow:0 0 15px rgba(245,179,1,.4)}
+    to{box-shadow:0 0 60px rgba(245,179,1,.95)}
+
+}
+/* Mensagem final de sucesso que aparece depois da ativação. */
+.vip-msg{
+    font-size:1.4rem;
+    font-weight:800;
+    color:var(--ouro);
+    margin-top:1rem;
+    animation:aparecer .6s
+}
+/* Animação de aparecer, entra pequeno e transparente e chega no tamanho normal. */
+@keyframes aparecer{
+    from{opacity:0;
+        transform:scale(.7)}
+        to{opacity:1;transform:none}
+}
+
+/* Tela de ativação, fundo escuro cobrindo tudo durante a animação de 3,6 segundos. */
+.ativ{
+    position:fixed;
+    inset:0;
+    background:rgba(2,6,23,.82);
+    z-index:250;
+    display:grid;
+    place-items:center;
+    pointer-events:none;
+    overflow:hidden;
+    animation:fade .3s;
+}
+
+/* Caixa central com coroa, barra de carregamento e texto da etapa. */
+.ativ-box{
+    text-align:center;
+    color:#fff;
+    width:min(340px,80%);
+    position:relative;
+}
+
+/* Coroa pulsando com brilho dourado. */
+.coroa{
+    font-size:4rem;
+    animation:escala 1.2s infinite alternate;
+    filter:drop-shadow(0 0 20px #F5B301);
+}
+/* Animação da coroa, vai de menor para maior. */
+@keyframes escala{
+    from{transform:scale(.85)}
+    to{transform:scale(1.2)}
+}
+
+/* Barra de carregamento, a largura vai de zero a cem por cento via JavaScript. */
+.ativ-barra{
+    height:10px;
+    border-radius:99px;
+    background:rgba(255,255,255,.2);
+    margin:1rem 0 .6rem;
+    overflow:hidden;
+}
+/* Preenchimento da barra com degradê, enche devagar. */
+.ativ-barra i{
+    display:block;
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#F5B301,#fff,#FF8A00);
+    transition:width 3.2s linear;
+}
+/* Partículas douradas, as variáveis dx e dy dizem para onde cada uma voa. */
+.part{position:absolute;
+    left:50%;
+    top:50%;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#F5B301;
+    box-shadow:0 0 10px #F5B301;
+    opacity:0;
+    animation:explode 1.8s ease-out infinite
+}
+/* Animação das partículas, saem do centro, se afastam e somem. */
+@keyframes explode{
+    0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;
+        transform:translate(var(--dx),var(--dy)) scale(.2)};
+    }
+/* Seção de voos com desconto e aviso de conteúdo bloqueado para quem não é VIP. */
+.sec-vip{
+    padding:2rem 0 3rem
+}
+/* Aviso de conteúdo bloqueado, centralizado em um cartão. */
+.bloqueado{
+    text-align:center;
+    color:var(--txt2);
+    padding:1.5rem;
+    background:var(--card);
+    border-radius:var(--r)
+}
+/* Linha de botões de voltar, centralizada. */
+.voltar{
+    display:flex;
+    gap:.6rem;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+
+/* Segunda parte, animação de ativação do VIP. */
+/* Muda o fundo da página quando o VIP já está ativado. */
+body.vip-on{
+    background:linear-gradient(180deg,#0B1437,var(--bg) 70%);
+    transition:background 1.2s;
+}
+
+/* Banner do topo em estilo premium, fundo azul escuro e cantos de baixo arredondados. */
+.vip-hero{
+    color:#fff;
+    border-radius:0 0 28px 28px;
+    background:linear-gradient(135deg,#0B1437,#1E3A8A);
+    padding:2.5rem 1rem;margin-bottom:.5rem}
+    /* Texto de apoio do banner em cinza claro. */
+    .vip-hero p{
+        color:#E2E8F0
+    }
+
+/* Luz circular que cresce e some ao ativar o VIP. */
+.luz{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:40px;
+    height:40px;
+    margin:-20px;border-radius:50%;
+    background:radial-gradient(circle,#fff6c9,#F5B301 50%,transparent 70%);
+    opacity:0
+}
+/* Dispara a animação da luz ao expandir. */
+.luz.expande{
+    animation:luz 2.7s ease-out forwards
+}
+/* Animação da luz, começa sem tamanho e cresce até sumir. */
+@keyframes luz{
+    0%{transform:scale(0);opacity:.9}
+    100%{transform:scale(60);opacity:0}
+}
+
+/* Brilho no botão durante a ativação. */
+.btn-ouro.brilho{
+    animation:brilhoBtn .5s infinite alternate
+}
+/* Animação do botão, só a sombra dourada aumenta. */
+@keyframes brilhoBtn{
+    to{box-shadow:0 0 30px 8px rgba(245,179,1,.9)}
+}
+/* Texto final da ativação em dourado e grande. */
+#ativTxt.final{
+    font-size:1.4rem;
+    font-weight:800;
+    color:#F5B301;
+    animation:aparecer .5s
+}

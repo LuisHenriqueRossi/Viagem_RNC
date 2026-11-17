@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<!-- Cabeça da página com metadados e ligações com os estilos. -->
+<head>
+<!-- Define o charset e o viewport pro layout funcionar no celular. -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ViagenRNC — Voos nacionais</title>
+<!-- Descrição que aparece nas buscas. -->
+<meta name="description" content="Explore destinos, compare voos e simule compras de passagens com a ViagenRNC.">
+<!-- Ícone da aba feito com SVG embutido. -->
+<link rel="icon" href="data:image/svg+xml,svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>text y='.9em' font-size='90'>✈️/text>/svg>">
+<!-- Aplica o tema salvo antes da página aparecer pra não piscar. -->
+<script>document.documentElement.dataset.theme=localStorage.getItem('vrnc_theme')||'light'</script>
+<!-- Carrega o CSS base. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<!-- Link de acessibilidade que pula o menu e vai direto pro conteúdo. -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- Cabeçalho com logo, menu, botão de tema e botão mobile. -->
+<header class="topo"><div class="container">
+<a class="logo" href="index.html" aria-label="ViagenRNC - início">✈️ ViagenRNC</a>
+<!-- Menu principal. -->
+<nav class="nav" id="nav" aria-label="Principal">
+<a href="index.html">Início</a><a href="viagens.html">Explorar Viagens</a><a href="ia.html">Simulador IA</a><a href="index.html#planejador">Gerenciador de Tarefas</a><a href="sobre.html">Sobre o site</a><a href="vip.html" class="vip-link">👑 Área VIP</a>
+</nav>
+<!-- Botão de tema que o JS usa pra trocar o ícone. -->
+<button class="icon-btn" id="btnTema" aria-label="Alternar modo claro e escuro" title="Alternar tema">🌙</button>
+<!-- Botão que abre e fecha o menu no celular. -->
+<button class="icon-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</div>
+</header>
+<!-- Conteúdo principal da página. -->
+<main id="conteudo">
+<!-- Hero com avião decorativo, título e botão que leva pra página de voos. -->
+<section class="hero" id="inicio"><span class="voo" aria-hidden="true">✈️</span><div class="container">
+<h1>Sua próxima aventura começa aqui.</h1>
+<p>Explore destinos, descubra oportunidades e viaje com a ViagenRNC.</p>
+<a href="viagens.html" class="btn btn-cta" id="cta">Encontrar minha próxima viagem</a>
+</div></section>
+
+<!-- Atalhos pras outras páginas do site. -->
+<section class="secao container" id="atalhos">
+<h2>Por onde começar?</h2>
+<div class="atalhos">
+<a class="atalho" href="viagens.html"><span aria-hidden="true">✈️</span><h3>Explorar viagens</h3><p>Veja os 75 voos, aplique filtros e simule a compra da sua passagem.</p></a>
+<a class="atalho" href="ia.html"><span aria-hidden="true">🤖</span><h3>Simulador IA</h3><p>Diga o que procura e receba recomendações de voos.</p></a>
+<a class="atalho" href="vip.html"><span aria-hidden="true">👑</span><h3>Área VIP</h3><p>Ative o VIP de teste e libere descontos de 10% a 25%.</p></a>
+<a class="atalho" href="sobre.html"><span aria-hidden="true">ℹ️</span><h3>Sobre o site</h3><p>Entenda como o ViagenRNC funciona por dentro.</p></a>
+</div>
+</section>
+
+<!-- Seção do planejador que gerencia tarefas. -->
+<section class="secao container" id="planejador">
+<h2>Planejador de Viagens</h2>
+
+<!-- Formulário da tarefa que serve pra adicionar e também pra editar. -->
+<form class="form-voo" id="formTarefa" novalidate>
+<div><label for="tNome">Tarefa</label><input id="tNome" maxlength="80" placeholder="Ex.: Organizar documentos"></div>
+<div><label for="tDesc">Descrição (opcional)</label><input id="tDesc" maxlength="160"></div>
+<div><label for="tPrio">Prioridade</label><select id="tPrio"><option>Alta</option><option selected>Média</option><option>Baixa</option></select></div>
+<div><label for="tPrazo">Prazo</label><input id="tPrazo" type="date"></div>
+<div class="acoes-form"><button class="btn" id="tAdd" type="submit">Adicionar tarefa</button><button class="btn btn-sec" type="button" id="tCancel" hidden>Cancelar edição</button></div>
+</form>
+
+<!-- Filtro de tarefas por status e contador de concluídas. -->
+<div class="tarefa-topo"><label for="tFiltro" class="sr">Filtrar por status</label><select id="tFiltro"><option value="todas">Todas</option><option value="pendentes">Pendentes</option><option value="concluidas">Concluídas</option></select><span id="tContador" aria-live="polite"></span></div>
+<!-- Barra de progresso que o JS preenche. -->
+<div class="barra" role="progressbar" aria-label="Progresso das tarefas" aria-valuemin="0" aria-valuemax="100" id="tBarra"><i id="tProg"></i></div>
+<!-- Lista de tarefas montada pelo JS. -->
+<ul class="tarefas" id="listaTarefas"></ul>
+</section>
+</main>
+
+<!-- Rodapé com o aviso de que a compra é só simulação. -->
+<footer class="rodape"><div class="container">© ViagenRNC · Simulação: nenhuma compra é real. <a href="viagens.html">Viagens</a> · <a href="vip.html">Área VIP</a> · <a href="ia.html">Simulador IA</a> · <a href="sobre.html">Sobre</a></div></footer>
+
+<!-- Carrega o script da página. -->
+<script src="js/script.js"></script>
+</body>
+</html>

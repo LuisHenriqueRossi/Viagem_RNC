@@ -1,0 +1,179 @@
+
+/* Coluna central da página, com um espaço entre os blocos. */
+.ia-wrap{
+    max-width:860px;
+    margin:2rem auto;
+    display:grid;
+    gap:1.2rem;
+}
+
+/* Cabeçalho do assistente, deixa avatar e título lado a lado. */
+.ia-cab{
+    display:flex;
+    align-items:center;
+    gap:1rem
+}
+/* Avatar redondo com degradê azul e o ícone no meio. */
+.ia-cab .av{
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:1.6rem;
+    background:linear-gradient(135deg,var(--pri),#1E3A8A);
+    color:#fff
+}
+/* Tamanho do título do cabeçalho. */
+.ia-cab h1{
+    font-size:1.6rem
+}
+/* Aviso dourado dizendo que o simulador usa regras e não é IA de verdade. */
+.aviso-ia{
+    background:var(--card);
+    border-left:5px solid var(--ouro);
+    padding:.8rem 1rem;
+    border-radius:12px;
+    color:var(--txt2);
+    font-size:.92rem;
+}
+/* Cartão do formulário onde a pessoa escreve o pedido. */
+.ia-form{
+    background:var(--card);padding:1.2rem;
+    border-radius:var(--r);
+    box-shadow:var(--sh);
+    display:grid;
+    gap:.8rem
+}
+/* Caixa de texto do pedido, com altura mínima e só estica na vertical. */
+.ia-form 
+textarea{
+    min-height:90px;
+    resize:vertical
+}
+/* Linha de botões com frases de exemplo, quebra de linha se faltar espaço. */
+.exemplos{
+    display:flex;
+    gap:.4rem;
+    flex-wrap:wrap
+}
+/* Cada botão de exemplo, redondinho e com borda fina. */
+.exemplos button{
+    border:1px solid var(--bord);
+    background:var(--bg);
+    color:var(--txt);
+    border-radius:99px;
+    padding:.3rem .8rem;
+    cursor:pointer;
+    font-size:.82rem
+}
+/* Indicador de analisando, os pontinhos ficam lado a lado dentro de um cartão. */
+.proc{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    padding:1rem;
+    background:var(--card);
+    border-radius:var(--r);
+    color:var(--txt2)
+}
+/* Cada pontinho do indicador, uma bolinha azul que usa a animação de quicar. */
+.pontos span{
+    display:inline-block;
+    width:9px;height:9px;
+    margin-right:4px;
+    border-radius:50%;
+    background:var(--pri);
+    animation:quica 1s infinite}
+
+/* Segundo pontinho começa um pouco depois. */
+.pontos span:nth-child(2){
+    animation-delay:.15s
+}
+/* Terceiro pontinho começa ainda mais tarde. */
+.pontos span:nth-child(3){
+    animation-delay:.3s
+}
+/* Animação dos pontinhos, eles sobem e ficam mais visíveis no meio do tempo. */
+@keyframes quica{
+    0%,80%,100%{transform:translateY(0);
+        opacity:.4}40%{transform:translateY(-8px);opacity:1}
+}
+/* Frase do resultado em negrito e maior. */
+.res-msg{
+    font-weight:700;
+    font-size:1.1rem
+}
+/* Lista que empilha os cartões de recomendação. */
+.ia-res{
+    display:grid;
+    gap:1rem
+}
+/* Cartão de recomendação, entra com a animação de aparecer. */
+.rec{
+    background:var(--card);
+    border-radius:var(--r);
+    box-shadow:var(--sh);
+    padding:1.1rem;
+    display:grid;
+    gap:.4rem;
+    animation:aparecer .4s
+}
+/* Animação de entrada, começa invisível e um pouco mais baixo. */
+@keyframes aparecer{
+    from{opacity:0;
+        transform:translateY(10px)}
+        to{opacity:1;transform:none}
+    }
+/* Caixa com o motivo de cada recomendação. */
+.just{
+    background:var(--bg);
+    padding:.6rem .8rem;
+    border-radius:10px;
+    font-size:.92rem;
+    color:var(--txt2)
+}
+/* Lista de botões do histórico, cada um ocupa a linha toda. */
+.hist-ia{
+    display:grid;
+    gap:.4rem
+}/* Cada botão do histórico, com texto alinhado à esquerda. */.hist-ia button{
+    text-align:left;
+    background:var(--card);
+    border:1px solid var(--bord);
+    color:var(--txt);
+    padding:.5rem .8rem;
+    border-radius:10px;
+    cursor:pointer
+}
+/* Linha de botões de ação, quebra de linha se precisar. */
+.ia-acoes{
+    display:flex;
+    gap:.6rem;
+    flex-wrap:wrap
+}
+
+/* Segunda parte, estilos da conversa. */
+/* Área do chat, tem altura máxima e rola por dentro quando enche. */
+.chat{
+    background:var(--card);
+    border-radius:var(--r);
+    box-shadow:var(--sh);
+    padding:1rem;
+    display:grid;
+    gap:.6rem;
+    max-height:340px;
+    overflow:auto;
+    align-content:start
+}
+/* Balão de mensagem, o da IA fica na esquerda com fundo comum. */
+.bolha{
+    max-width:85%;
+    padding:.6rem .9rem;border-radius:14px;
+    background:var(--bg)}
+/* Balão de quem escreve, vai para a direita com fundo azul. */
+.bolha.eu{
+    justify-self:end;
+    background:var(--pri);
+    color:#fff
+}

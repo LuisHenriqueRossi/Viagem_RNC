@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<!-- Cabeça da página com metadados e ligações com os estilos. -->
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ViagenRNC — Explorar viagens</title>
+<meta name="description" content="Veja todos os voos da ViagenRNC, filtre por estado, cidade, preço e companhia e simule a compra da passagem.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+<!-- Aplica o tema salvo antes da página aparecer pra não piscar. -->
+<script>document.documentElement.dataset.theme=localStorage.getItem('vrnc_theme')||'light'</script>
+<!-- Carrega o CSS base. -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Link de acessibilidade que pula o menu e vai direto pro conteúdo. -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- Cabeçalho com logo, menu, botão de tema e botão mobile. -->
+<header class="topo"><div class="container">
+<a class="logo" href="index.html" aria-label="ViagenRNC - início">✈️ ViagenRNC</a>
+<!-- Menu de navegação principal com os links das páginas. -->
+<nav class="nav" id="nav" aria-label="Principal">
+<a href="index.html">Início</a><a href="viagens.html">Explorar Viagens</a><a href="ia.html">Simulador IA</a><a href="index.html#planejador">Gerenciador de Tarefas</a><a href="sobre.html">Sobre o site</a><a href="vip.html" class="vip-link">👑 Área VIP</a>
+</nav>
+<button class="icon-btn" id="btnTema" aria-label="Alternar modo claro e escuro" title="Alternar tema">🌙</button>
+<button class="icon-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</div></header>
+
+<!-- Conteúdo principal da página. -->
+<main id="conteudo">
+<!-- Faixa de título da página. -->
+<section class="pag-cab"><div class="container">
+<h1>Explorar viagens</h1>
+<p>Compare voos para São Paulo, Rio de Janeiro e Minas Gerais e simule a compra da sua passagem.</p>
+</div></section>
+
+<!-- Catálogo com filtros e grade de voos. -->
+<section class="secao container" id="viagens">
+<!-- Formulário de filtros com selects pra escolher e inputs pra digitar. -->
+<form class="filtros" id="filtros" aria-label="Filtros de voos">
+<div><label for="fEstado">Estado</label><select id="fEstado"><option value="">Todos</option><option value="SP">São Paulo (SP)</option><option value="RJ">Rio de Janeiro (RJ)</option><option value="MG">Minas Gerais (MG)</option></select></div>
+<div><label for="fCidade">Cidade</label><select id="fCidade"></select></div>
+<div><label for="fMin">Preço mínimo (R$)</label><input id="fMin" type="number" min="0" step="10"></div>
+<div><label for="fMax">Preço máximo (R$)</label><input id="fMax" type="number" min="0" step="10"></div>
+<div><label for="fCia">Companhia aérea</label><select id="fCia"></select></div>
+<div><label for="fHora">Partida a partir de</label><input id="fHora" type="time"></div>
+<div><label for="fOrdem">Ordenar por</label><select id="fOrdem"><option value="">Padrão</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="alfa">Cidade (A–Z)</option><option value="duracao">Menor duração</option></select></div>
+<button class="btn btn-sec" type="button" id="limpar">Limpar Filtros</button>
+</form>
+
+<!-- Contador de resultados que atualiza quando o número muda. -->
+<p class="contador" id="contador" aria-live="polite"></p>
+<!-- Aqui o JS coloca os cards dos voos. -->
+<div class="grid" id="grid"></div>
+<!-- Mensagem de nenhum resultado e botão que carrega mais voos. -->
+<p class="vazio" id="vazio" hidden>Nenhum voo encontrado. Tente modificar os filtros.</p>
+<div class="centro"><button class="btn btn-sec" id="maisBtn" hidden>Mostrar mais voos</button></div>
+<!-- Lista das compras salvas, montada pelo JS. -->
+<h3>Minhas reservas</h3><div class="lista" id="historico"></div>
+</section>
+
+</main>
+
+<!-- Rodapé com o aviso de que a compra é só simulação. -->
+<footer class="rodape"><div class="container">© ViagenRNC · Simulação: nenhuma compra é real. <a href="index.html">Início</a> · <a href="vip.html">Área VIP</a> · <a href="ia.html">Simulador IA</a> · <a href="sobre.html">Sobre</a></div></footer>
+
+<!-- Modal de detalhes do voo. Fica escondido até o JS abrir. -->
+<div class="overlay" id="mDet" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dTitulo">
+<button class="x" data-fechar aria-label="Fechar janela">✕</button><div class="mfoto" id="dFoto"></div>
+<div class="mcorpo"><h2 id="dTitulo"></h2><div id="dInfo"></div><div class="acoes"><button class="btn" id="dComprar">Comprar Passagem</button><button class="btn btn-sec" data-fechar>Fechar</button></div></div></div></div>
+
+<!-- Modal de compra com formulário e resumo do valor calculado pelo JS. -->
+<div class="overlay" id="mCompra" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="cTitulo">
+<button class="x" data-fechar aria-label="Fechar janela">✕</button>
+<form class="mcorpo" id="formCompra" novalidate><h2 id="cTitulo">Comprar passagem</h2><div id="cInfo"></div>
+<div><label for="cNome">Nome do comprador</label><input id="cNome" autocomplete="name"></div>
+<div><label for="cEmail">E-mail</label><input id="cEmail" type="email" autocomplete="email"></div>
+<div><label for="cData">Data da viagem</label><input id="cData" type="date"></div>
+<div><label for="cQtd">Passageiros</label><input id="cQtd" type="number" min="1" value="1"></div>
+<div class="resumo" id="cResumo" aria-live="polite"></div>
+<div class="acoes"><button class="btn" type="submit">Confirmar Compra</button><button class="btn btn-sec" type="button" data-fechar>Cancelar</button></div></form></div></div>
+<!-- Carrega o script do catálogo de voos. -->
+<script src="js/viagens.js"></script>
+</body>
+</html>
